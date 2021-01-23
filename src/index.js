@@ -1,6 +1,7 @@
 const bodyParser = require("body-parser");
 const express = require("express");
 
+const { MessagingResponse } = require("twilio").twiml;
 const { IncomingWebhook } = require("@slack/webhook");
 
 const { SLACK_WEBHOOK_URL } = process.env;
@@ -16,13 +17,15 @@ app.use(bodyParser.json());
 app.post("/sms", (req, res) => {
   const smsBody = req.body.Body;
 
+  const twiml = new MessagingResponse();
+
   (async () => {
     await slackWebhook.send({
       text: `Forwarded SMS: ${smsBody}`,
     });
   })();
 
-  res.send("Ok");
+  res.end(twiml.toString());
 });
 
 if (process.env.NODE_ENV !== "test") {
