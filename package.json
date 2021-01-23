@@ -1,0 +1,10 @@
+{
+  "name": "slacking-on-mfa",
+  "version": "0.0.1",
+  "description": "An experiment in working around overly restrictive MFA solutions",
+  "main": "index.js",
+  "repository": "git@github.com:stripethree/slacking-on-mfa.git",
+  "author": "Jeff Israel <github@jeffisrael.com>",
+  "license": "MIT",
+  "private": false
+}
